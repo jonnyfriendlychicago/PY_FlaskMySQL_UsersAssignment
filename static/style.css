@@ -15,7 +15,7 @@
 .formContainer02 {
     padding: 25px; 
     background-color: rgb(65, 65, 65);
-    width: 600px;
+    width: 900px;
     /* height: 400px;  */
     margin: 10px; 
 }
@@ -206,4 +206,5 @@ body {
 .studentTblData {
     background-color: lightgray;
     color: black; 
+    width: 200px;
 }

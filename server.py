@@ -12,10 +12,15 @@ def index():
     allUsers = User_cls.get_all()
     return render_template("index.html", display_allUsers = allUsers)
 
+@app.route('/addNewUser')
+def addNew():
+    # allUsers = User_cls.get_all()
+    return render_template("addNewUser.html") #, display_allUsers = allUsers)
+
 # relevant code snippet from server.py
 # from friend import Friend
 @app.route('/create_user', methods=["POST"])
-def create_friend():
+def create_user():
     # First we make a data dictionary from our request.form coming from our template.
     # The keys in data need to line up exactly with the variables in our query string.
     data = {
@@ -26,8 +31,14 @@ def create_friend():
     # We pass the data dictionary into the save method from the Friend class.
     User_cls.save(data)
     # Don't forget to redirect after saving to the database.
-    return redirect('/')
+    # return redirect('/')
+    # immed above replaced by immed below; need an inbetween step here, to stop dupe submissions on refresh
+    return redirect('/displayIndexAgain') # this entire two-step redirect is  needed when you've got a results page. 
+    
 
+@app.route('/displayIndexAgain')
+def displayIndexAgain():
+    return redirect("/")
 
 """DON'T TOUCH BELOW :-) below always needs to be at the bottom of the script, yes!"""
 # below is stuff you oughta have, per TA Cameron Smith, from Coding Dojo: 
